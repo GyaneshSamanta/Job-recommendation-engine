@@ -1,51 +1,80 @@
-### Next-Gen ML Research for ischoolconnect
-#### Inspiration💡
+# Job Recommendation Engine
 
-With students opting for higher studies in foreign universities, it is important for them to understand the categories and specifics of kobs that they'll be able to opt in for once completing their higher studies. For the same, we use a kaggle data set on job openings and attempt to understand the qualifications required for the jobs and recommend jobs based on user inputs. 
+> **Helping students choose where their career compass points next — one similarity score at a time.**
 
-#### What it does 🧭
+![Status](https://img.shields.io/badge/status-research--prototype-blue)
+![Python](https://img.shields.io/badge/python-3.8+-yellow)
+![Notebook](https://img.shields.io/badge/jupyter-notebook-orange)
 
-The Job recommendation engine has 2 major functionality in terms of its working 
+---
 
- - Take in current job as an input and recommend jobs that require a similar skillset
- - Take in parameters as user qualifications, education and experience to recommend jobs based on other people's history with jobs 
+## About
 
+A research notebook built for **iSchoolConnect** that recommends jobs to students considering higher studies abroad. It answers two questions:
 
-#### How we built it 🔧
+- **Who?** Students applying to foreign universities and trying to map degrees to careers.
+- **What?** A content-based job recommender powered by a Kaggle job-postings dataset.
+- **Where?** A standalone Jupyter notebook — no server, no UI, just reproducible analysis.
+- **When?** Built in 2022 as part of an ML research engagement.
+- **Why?** Most students pick a degree without knowing what jobs it actually unlocks. This makes the link explicit.
 
-The solution was built using jupyter notebook, python and multiple python libraries. 
+## The Story
 
-#### Tech Stack 🔨
-1. Python
-2. Kaggle
-3. Machine learning models
-4. Git
-5. GitHub
+We started with a Kaggle dump of job postings and a simple hypothesis: students don't need a job board, they need a *map*. The notebook walks through that map in two passes.
 
-#### Challenges we ran into 🏃‍♂️
+The **first pass** is a "more like this" engine — feed it a job title, get back the postings that demand a similar skill stack. The **second pass** flips the question: feed in your education, qualifications, and experience, and get a ranked list of roles that people with similar profiles have landed.
 
-1. There was a major difference in a list of all types of jobs around the world and the list of current job openings. This led to inaccurate recommendations when it came to Non-IT based jobs as accounting, janitors and more. 
+The honest finding: the recommender shines on tech roles (CS, dev, IT) where the dataset is dense, and stumbles on long-tail roles (accounting, trades, non-IT services) where the postings are sparse. That gap is the next chapter.
 
-2. 
-#### Accomplishments that we're proud of 🏅
-1. The function to recommend similar jobs to people works as per it's specifications
-2. The recommendation engine's accuracy while working with Computer science, developer and IT jobs was found to be satisfactory. 
+## Gallery
 
-#### What we learned 🧠
-1. Working in a multi ethnic and multi diverse team around the globe
-2. Real time collaboration with developers all around the world
-3. Setting up deadlines and working with set objectives to ensure a timely delivery. 
+> Open `noob_job_recommendation.ipynb` to see the full walkthrough — EDA, feature engineering, similarity matrices, and recommendation outputs.
 
-#### What's next ⏭
- 1. For future additions we aim to improve the recommendation system by collecting data of the list of jobs available wth the asoociated qualifications necessary for it. 
+---
 
-#### Collaborators 🤖
+## Tech Stack
 
-Only developers.
-| Name      | GitHub Profile     |
-| :------------- | :----------: |
-|  Gyanesh Samanta   | [GitHub](https://www.github.com/gyanesh-samanta-123) |
+| Layer | Tools |
+|------|-------|
+| Language | Python 3 |
+| Environment | Jupyter Notebook |
+| Data | Kaggle job-postings dataset |
+| ML | scikit-learn, pandas, numpy (TF-IDF + cosine similarity) |
+| Versioning | Git, GitHub |
 
+## Repo Structure
 
+```
+Job-recommendation-engine/
+├── noob_job_recommendation.ipynb   # Main notebook (EDA + model + recs)
+├── dataset.txt                     # Pointer to Kaggle dataset
+└── README.md
+```
 
+## Getting Started
 
+```bash
+git clone https://github.com/GyaneshSamanta/Job-recommendation-engine.git
+cd Job-recommendation-engine
+
+# Recommended: a fresh venv
+python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install jupyter pandas numpy scikit-learn
+
+# Grab the Kaggle dataset referenced in dataset.txt, then:
+jupyter notebook noob_job_recommendation.ipynb
+```
+
+## Contributing
+
+This is a research artifact, not a maintained library — but PRs that improve the non-IT coverage, swap TF-IDF for embeddings, or wrap the model in an API are welcome.
+
+## License
+
+No license file present — treat as **all rights reserved** until one is added. Reach out before reusing.
+
+## Credits
+
+- **Gyanesh Samanta** — research, modelling, notebook authoring
+- **iSchoolConnect** — research sponsor and problem owner
+- **Kaggle community** — for the open job-postings dataset that made this possible
